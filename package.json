@@ -3,8 +3,8 @@
   "name": "select-php-method",
   "icon": "images/icon.png",
   "displayName": "Select PHP Method",
-  "description": "Selecciona y copia métodos completos de clases PHP, incluyendo comentarios PHPDoc, con un atajo de teclado Ctrl+Alt+M. Ideal para desarrolladores PHP que necesitan manejar código rápidamente.",
-  "version": "0.0.2",
+  "description": "Selects and copies entire PHP class methods, including PHPDoc comments, with a keyboard shortcut Ctrl+Alt+M. Ideal for PHP developers who need to manage code quickly.",
+  "version": "0.0.3",
   "license": "MIT",
   "engines": {
     "vscode": "^1.97.0"

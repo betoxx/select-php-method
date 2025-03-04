@@ -1,33 +1,34 @@
+# 'README.md'
 # Select PHP Method
 
-## Descripción
-Esta extensión para Visual Studio Code permite seleccionar y copiar automáticamente métodos completos de clases PHP, incluidos los comentarios PHPDoc, con un simple atajo de teclado (Ctrl+Alt+M). Es ideal para desarrolladores PHP que necesitan manejar código rápidamente y mantener consistencia en sus proyectos.
+## Description
+This extension for Visual Studio Code allows you to automatically select and copy entire PHP class methods, including PHPDoc comments, with a simple keyboard shortcut (Ctrl+Alt+M). It is ideal for PHP developers who need to quickly manage code and maintain consistency in their projects.
 
-## Características
-- Selecciona y copia métodos PHP completos, incluyendo PHPDoc, modificadores de acceso (public, private, protected), y el modificador static.
-- Usa el atajo de teclado Ctrl+Alt+M (Cmd+Alt+M en Mac) para activar la funcionalidad.
-- Compatible con métodos con o sin comentarios PHPDoc.
+## Features
+- Selects and copies complete PHP methods, including PHPDoc, access modifiers (public, private, protected), and the static modifier.
+- Uses the keyboard shortcut Ctrl+Alt+M (Cmd+Alt+M on Mac) to activate the functionality.
+- Compatible with methods with or without PHPDoc comments.
 
-## Requisitos
-- Visual Studio Code versión 1.97.0 o superior.
-- Archivos PHP abiertos en el editor.
+## Requirements
+- Visual Studio Code version 1.97.0 or higher.
+- PHP files open in the editor.
 
-## Uso
-1. Abre un archivo PHP en Visual Studio Code.
-2. Coloca el cursor dentro de un método PHP (puede ser en cualquier línea, incluyendo el comentario PHPDoc o el cuerpo del método).
-3. Presiona Ctrl+Alt+M (o Cmd+Alt+M en Mac) para seleccionar y copiar el método completo al portapapeles.
+## Usage
+1. Open a PHP file in Visual Studio Code.
+2. Place the cursor inside a PHP method (it can be on any line, including the PHPDoc comment or the method body).
+3. Press Ctrl+Alt+M (or Cmd+Alt+M on Mac) to select and copy the entire method to the clipboard.
 
-## Instalación
-- Instala esta extensión desde el Marketplace de Visual Studio Code o desde el archivo .vsix generado.
-- Una vez instalada, estará activa automáticamente en archivos PHP.
+## Installation
+- Install this extension from the Visual Studio Code Marketplace or from the generated .vsix file.
+- Once installed, it will be automatically active in PHP files.
 
-## Capturas de pantalla (Opcional)
-Aquí tienes un ejemplo de cómo funciona Select PHP Method:
+## Screenshots (Optional)
+Here is an example of how Select PHP Method works:
 
-![Demostración de Select PHP Method](https://raw.githubusercontent.com/betoxx/select-php-method/main/images/demo-select-php-method.png)
+![Select PHP Method Demo](https://raw.githubusercontent.com/betoxx/select-php-method/main/images/demo-select-php-method.png)
 
-## Contribuciones
-Si deseas contribuir al desarrollo de esta extensión, visita nuestro repositorio en GitHub: [https://github.com/betoxx/select-php-method/](https://github.com/betoxx/select-php-method/).
+## Contributions
+If you want to contribute to the development of this extension, visit our GitHub repository: [https://github.com/betoxx/select-php-method/](https://github.com/betoxx/select-php-method/).
 
-## Licencia
-Esta extensión está bajo la licencia MIT.
+## License
+This extension is licensed under the MIT License.
