@@ -24,4 +24,10 @@ Esta extensión para Visual Studio Code permite seleccionar y copiar automática
 ## Capturas de pantalla (Opcional)
 Aquí tienes un ejemplo de cómo funciona Select PHP Method:
 
-![Demostración de Select PHP Method](images/demo-select-php-method.png)
+![Demostración de Select PHP Method](https://raw.githubusercontent.com/betoxx/select-php-method/main/images/demo-select-php-method.png)
+
+## Contribuciones
+Si deseas contribuir al desarrollo de esta extensión, visita nuestro repositorio en GitHub: [https://github.com/betoxx/select-php-method/](https://github.com/betoxx/select-php-method/).
+
+## Licencia
+Esta extensión está bajo la licencia MIT.
