@@ -10,14 +10,10 @@ export function activate(context: vscode.ExtensionContext) {
         const document = editor.document;
         const position = editor.selection.active;
         
-        // Encontrar el inicio y fin del método
         const methodRange = findMethodRange(document, position);
         
         if (methodRange) {
-            // Seleccionar el rango completo
             editor.selection = new vscode.Selection(methodRange.start, methodRange.end);
-            
-            // Copiar al portapapeles
             vscode.env.clipboard.writeText(document.getText(methodRange));
             vscode.window.showInformationMessage('Método copiado al portapapeles');
         } else {
@@ -31,34 +27,39 @@ export function activate(context: vscode.ExtensionContext) {
 function findMethodRange(document: vscode.TextDocument, position: vscode.Position): vscode.Range | undefined {
     const text = document.getText();
     const offset = document.offsetAt(position);
-    
-    // Expresión regular corregida y más clara para detectar métodos PHP
-    const methodPattern = new RegExp(
-        `(?:\\s*\\/\\*\\*[\\s\\S]*?\\*\\/\\s*)?` +  // Comentario PHPDoc opcional
-        `(?:public|private|protected)?` +           // Modificador de acceso opcional
-        `(?:\\s*static)?` +                         // Modificador static opcional
-        `\\s*function\\s+\\w+\\s*\\(\\s*` +         // Definición de función
-        `[\\s\\S]*?\\{\\s*` +                       // Cuerpo del método (hasta abrir llave)
-        `[\\s\\S]*?\\}\\s*`,                        // Cuerpo del método (hasta cerrar llave)
-        'g'
-    );
-    
+
+    // Expresión regular para encontrar métodos PHP incluyendo PHPDoc
+    const methodRegex = /(\/\*\*[\s\S]*?\*\/\s*)?(public|private|protected)?(\s+static)?\s+function\s+\w+\s*\([^)]*\)\s*\{/gm;
+
     let match;
-    let methodRange: vscode.Range | undefined;
-    
-    while ((match = methodPattern.exec(text)) !== null) {
+    while ((match = methodRegex.exec(text)) !== null) {
         const startOffset = match.index;
-        let endOffset = match.index + match[0].length;
-        
-        if (offset >= startOffset && offset <= endOffset) {
-            const startPos = document.positionAt(startOffset);
-            const endPos = document.positionAt(endOffset);
-            methodRange = new vscode.Range(startPos, endPos);
-            break;
+        const matchLength = match[0].length;
+        const openingBraceOffset = startOffset + matchLength - 1; // Posición de '{'
+
+        let braceBalance = 1;
+        let currentOffset = openingBraceOffset + 1;
+
+        // Encontrar el cierre balanceado de las llaves
+        while (currentOffset < text.length && braceBalance > 0) {
+            const char = text[currentOffset];
+            if (char === '{') braceBalance++;
+            else if (char === '}') braceBalance--;
+            currentOffset++;
+        }
+
+        if (braceBalance === 0) {
+            const endOffset = currentOffset;
+            // Verificar si el cursor está dentro de este método
+            if (offset >= startOffset && offset < endOffset) {
+                const startPos = document.positionAt(startOffset);
+                const endPos = document.positionAt(endOffset);
+                return new vscode.Range(startPos, endPos);
+            }
         }
     }
-    
-    return methodRange;
+
+    return undefined;
 }
 
 export function deactivate() {}
