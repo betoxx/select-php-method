@@ -28,8 +28,8 @@ function findMethodRange(document: vscode.TextDocument, position: vscode.Positio
     const text = document.getText();
     const offset = document.offsetAt(position);
 
-    // Expresión regular para encontrar métodos PHP incluyendo PHPDoc
-    const methodRegex = /(\/\*\*[\s\S]*?\*\/\s*)?(public|private|protected)?(\s+static)?\s+function\s+\w+\s*\([^)]*\)\s*\{/gm;
+    // Regular expression to detect PHP methods including PHPDoc comments
+    const methodRegex = /(\/\*\*[\s\S]*?\*\/\s*)?(public|private|protected)?(\s+static)?\s+function\s+\w+\s*\([^)]*\)(\s*:\s*\w+)?\s*\{/gm;
 
     let match;
     while ((match = methodRegex.exec(text)) !== null) {
@@ -40,7 +40,7 @@ function findMethodRange(document: vscode.TextDocument, position: vscode.Positio
         let braceBalance = 1;
         let currentOffset = openingBraceOffset + 1;
 
-        // Encontrar el cierre balanceado de las llaves
+        // Find the balanced closing brace
         while (currentOffset < text.length && braceBalance > 0) {
             const char = text[currentOffset];
             if (char === '{') braceBalance++;
@@ -50,7 +50,7 @@ function findMethodRange(document: vscode.TextDocument, position: vscode.Positio
 
         if (braceBalance === 0) {
             const endOffset = currentOffset;
-            // Verificar si el cursor está dentro de este método
+            // Check if the cursor is inside this method
             if (offset >= startOffset && offset < endOffset) {
                 const startPos = document.positionAt(startOffset);
                 const endPos = document.positionAt(endOffset);

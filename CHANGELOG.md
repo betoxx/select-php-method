@@ -1,8 +1,12 @@
-# 'CHANGELOG.md'
-# CHANGELOG.md
 # Change Log
 
 All notable changes to the "select-php-method" extension will be documented in this file.
+
+## [0.0.4] - 2024-04-26
+
+### Fixed
+- Soporte para métodos con declaración de tipo de retorno (ej: `: array`, `: string`)
+- Corrección en la expresión regular para incluir tipos de retorno opcionales
 
 ## [0.0.3] - 2024-03-04
 
